@@ -10,10 +10,10 @@ import reportWebVitals from './reportWebVitals';
 store.dispatch(fetchData)
 ReactDOM.render(
   <React.StrictMode>
-  <Provider store={store} >
-    <App />
-  </Provider>
-</React.StrictMode>,
+    <Provider store={store} >
+      <App />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
