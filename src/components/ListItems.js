@@ -1,9 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router";
 import { useNavigate } from "react-router-dom"
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,7 +23,10 @@ function ListItems() {
   const dispatch = useDispatch()
   // const browserHistory = ReactRouter.browserHistory;
 
-  const data = useSelector(state => state.data.items);
+  let items = useSelector(state => state.data.items);
+  
+  
+  console.log(items)
   const tableTitle = [
     "Id", "Name", "Description", "Watchers Count", "Language", "Open Issues", "Private", "Action"
   ];
@@ -37,6 +38,34 @@ function ListItems() {
     console.log(id)
     navigate(`edit/${id}`)
   }
+  // let draggedItem = items[0];
+  // let draggedIdx;
+  // const onDragStart = (e, index) => {
+  //   draggedItem = items[index];
+  //   e.dataTransfer.effectAllowed = "move";
+  //   e.dataTransfer.setData("text/html", e.target.parentNode);
+  //   e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
+  // };
+  // const onDragOver = index => {
+  //   const draggedOverItem = items[index];
+
+  //   // if the item is dragged over itself, ignore
+  //   if (this.draggedItem === draggedOverItem) {
+  //     return;
+  //   }
+
+  //   // filter out the currently dragged item
+  //   let newItems = items.filter(item => item !== draggedItem);
+
+  //   // add the dragged item after the dragged over item
+  //   items.splice(index, 0, draggedItem);
+
+  //   items = newItems;
+  // };
+
+  // const onDragEnd = () => {
+  //   draggedIdx = null;
+  // };
   return (
     <TableContainer sx={{ width: '90%', margin: "0 auto" }} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -48,12 +77,17 @@ function ListItems() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(item => {
+          {items.map((item, idx )=> {
             const { id, name, description, watchers_count, language, open_issues, private: privates } = item
             return (
+              
               <TableRow
                 key={id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                draggable
+                // onDragOver={() => this.onDragOver(idx)}
+                // onDragStart={e => onDragStart(e, idx)}
+                // onDragEnd={ () => onDragEnd()}
               >
                 <TableCell >{id}</TableCell >
                 <TableCell align="center">{name}</TableCell >
@@ -75,6 +109,7 @@ function ListItems() {
                   </Tooltip>
                 </TableCell >
               </TableRow>
+              
             )
           })}
         </TableBody>

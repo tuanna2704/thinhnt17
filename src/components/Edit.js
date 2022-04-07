@@ -21,7 +21,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   border: "none",
   boxShadow: "none",
-  padding: theme.spacing(1),
 }));
 
 function Edit() {
@@ -34,7 +33,7 @@ function Edit() {
     watchers_count: 0,
     language: "",
     open_issues: 0,
-    private: "",
+    private: null,  
   });
   const currentItem = items.find(
     (item) => item.id === parseInt(id)
@@ -244,15 +243,20 @@ function Edit() {
         <Grid sx={{ width: "50%", margin: "0 auto" }} container spacing={1}>
           <Grid item xs={4}></Grid>
           <Grid item xs={2}>
-            <Item style={noPadding}>
-              <Button style={btn} onClick={() => handleSubmit()}>
+            <Item sx={{ padding: "0"}}>
+              <Button variant="contained"
+              size="large" 
+              onClick={() => handleSubmit()}
+              disabled={!item.id || !item.name || !item.description || !item.watchers_count || !item.language || !item.open_issues || item.private === null ? true : false} 
+              >
                 Update
               </Button>
             </Item>
           </Grid>
           <Grid item xs={2}>
-            <Item style={noPadding}>
-              <Button style={btn} onClick={() => navigate("/")}>Cancel</Button>
+            <Item sx={{ padding: "0"}}>
+              <Button variant="contained"
+              size="large" onClick={() => navigate("/")}>Cancel</Button>
             </Item>
           </Grid>
         </Grid>
@@ -260,12 +264,4 @@ function Edit() {
     </Paper>
   )
 }
-const btn = {
-  width: "100%",
-  backgroundColor: "#1976d2",
-  color: "white",
-};
-const noPadding = {
-  padding: "0",
-};
 export default Edit

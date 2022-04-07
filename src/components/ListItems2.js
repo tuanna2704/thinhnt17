@@ -2,8 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router";
 import { useNavigate } from "react-router-dom"
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

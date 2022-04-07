@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from "react-router-dom";
 
 
 
@@ -33,12 +32,9 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const toAddItem =(p) => {
+  const handleRoute =(p) => {
     navigate(`/${p}`)
   }
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
     return (
         <AppBar sx={{marginBottom: "15px" }} position="static">
           <Container maxWidth="xl">
@@ -48,8 +44,9 @@ function Navbar() {
                 noWrap
                 component="div"
                 sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                onClick={() => navigate("/")}
               >
-                LOGO
+                WEB-REACT-APP
               </Typography>
     
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -82,7 +79,7 @@ function Navbar() {
                   }}
                 >
                     {pages.map((page) => (
-                <MenuItem key={page} onClick={()=>toAddItem(page)}>
+                <MenuItem key={page} onClick={()=>handleRoute(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -92,15 +89,16 @@ function Navbar() {
                 variant="h6"
                 noWrap
                 component="div"
+                onClick={() => navigate("/")}
                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
               >
-                LOGO
+                WEB-REACT-APP
               </Typography>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
               <Button
                 key={page}
-                onClick={()=>toAddItem(page)}
+                onClick={()=>handleRoute(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
@@ -110,28 +108,11 @@ function Navbar() {
               </Box>
     
               <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
+                <Tooltip title="LOGIN">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="" src="../avatar.png" />
                   </IconButton>
                 </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                </Menu>
               </Box>
             </Toolbar>
           </Container>

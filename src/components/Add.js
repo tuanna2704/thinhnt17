@@ -24,7 +24,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   border: "none",
   boxShadow: "none",
-  padding: theme.spacing(1),
 }));
 
 function Add() {
@@ -39,7 +38,7 @@ function Add() {
     watchers_count: "",
     language: "",
     open_issues: "",
-    private: "",
+    private: null,
   });
   const handleChange = (event) => {
     const name = event.target.name;
@@ -51,6 +50,7 @@ function Add() {
     let idChecked = data.map(it => it.id)
     if (!idChecked.includes(item.id)) {
       dispatch({ type: ADD_ITEM, payload: item })
+      console.log(data)
       navigate("/")
     } else {
       alert("Id đã tồn tại")
@@ -59,7 +59,7 @@ function Add() {
   };
   return (
     <Paper sx={{ padding: "30px 0" }}>
-      <Box sx={{ flexGrow: 1, margin: "25px 0" }}>
+      <Box sx={{ flexGrow: 1, margin: "0 auto",  width: "75%"}}>
         <Grid container>
           <Grid item xs={12}>
             <Item>
@@ -89,8 +89,6 @@ function Add() {
                   label="ID"
                   variant="outlined"
                   value={item.id}
-                  error={item.id === ""}
-                  helperText={item.id === "" ? "ID is required" : " "}
                   onChange={handleChange}
                 />
               </Box>
@@ -247,16 +245,21 @@ function Add() {
 
         <Grid sx={{ width: "50%", margin: "0 auto" }} container spacing={1}>
           <Grid item xs={4}></Grid>
-          <Grid item xs={2}>
-            <Item style={noPadding}>
-              <Button style={btn} onClick={() => handleSubmit()}>
+          <Grid item xs={2 }>
+            <Item  sx={{ padding: "0"}}>
+              <Button
+              variant="contained"
+              size="large"
+              onClick={() => handleSubmit()} 
+              disabled={!item.id || !item.name || !item.description || !item.watchers_count || !item.language || !item.open_issues || item.private === null ? true : false}              
+              >
                 Submit
               </Button>
             </Item>
           </Grid>
           <Grid item xs={2}>
-            <Item style={noPadding}>
-              <Button style={btn} onClick={() => navigate("/")}>Cancel</Button>
+            <Item sx={{ padding: "0"}}>
+              <Button variant="contained" size="large" onClick={() => navigate("/")}>Cancel</Button>
             </Item>
           </Grid>
         </Grid>
@@ -264,12 +267,4 @@ function Add() {
     </Paper>
   );
 }
-const btn = {
-  width: "100%",
-  backgroundColor: "#1976d2",
-  color: "white",
-};
-const noPadding = {
-  padding: "0",
-};
 export default Add;
