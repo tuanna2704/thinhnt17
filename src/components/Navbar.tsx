@@ -19,20 +19,9 @@ import MenuItem from '@mui/material/MenuItem';
   
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   let navigate = useNavigate();
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
   const pages = ["repos1", "repos2", "add"]
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-  const handleRoute =(p) => {
+  const handleRoute =(p: any) => {
     navigate(`/${p}`)
   }
     return (
@@ -55,35 +44,11 @@ function Navbar() {
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
                   color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: 'block', md: 'none' },
-                  }}
-                >
-                    {pages.map((page) => (
-                <MenuItem key={page} onClick={()=>handleRoute(page)}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-                </Menu>
+               
               </Box>
               <Typography
                 variant="h6"
@@ -109,7 +74,7 @@ function Navbar() {
     
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="LOGIN">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton sx={{ p: 0 }}>
                     <Avatar alt="" src="../avatar.png" />
                   </IconButton>
                 </Tooltip>

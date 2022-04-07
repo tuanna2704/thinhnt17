@@ -23,7 +23,7 @@ function ListItems() {
   const dispatch = useDispatch()
   // const browserHistory = ReactRouter.browserHistory;
 
-  const data = useSelector(state => state.data.items);
+  const data = useSelector((state :any)  => state.data.items);
   const tableTitle = [
     "Id", "Name", "Description", "Watchers Count", "Language", "Open Issues", "Private", "Action"
   ];

@@ -24,10 +24,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Edit() {
-  const items = useSelector(state => state.data.items);
+  const items = useSelector((state :any) => state.data.items);
   const { id } = useParams();
   const [item, setItem] = useState({
-    id: "",
+    id: 0,
     name: "",
     description: "",
     watchers_count: 0,
@@ -36,7 +36,7 @@ function Edit() {
     private: null,  
   });
   const currentItem = items.find(
-    (item) => item.id === parseInt(id)
+    (item) => item.id == parseInt(id)
   );
   console.log(currentItem)
   useEffect(() => {
@@ -230,8 +230,8 @@ function Edit() {
                     value={item.private}
                     label="Private"
                     onChange={handleChange}>
-                    <MenuItem value={true}>True</MenuItem>
-                    <MenuItem value={false}>False</MenuItem>
+                    <MenuItem value={1}>True</MenuItem>
+                    <MenuItem value={0}>False</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -247,7 +247,7 @@ function Edit() {
               <Button variant="contained"
               size="large" 
               onClick={() => handleSubmit()}
-              disabled={!item.id || !item.name || !item.description || !item.watchers_count || !item.language || !item.open_issues || item.private === null ? true : false} 
+              disabled={!item.id || !item.name  ? true : false} 
               >
                 Update
               </Button>

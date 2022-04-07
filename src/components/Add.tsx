@@ -27,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Add() {
-  const data = useSelector(state => state.data.items);
+  const data = useSelector((state :any) => state?.data.items);
 
   let navigate = useNavigate();
   const dispatch = useDispatch()
@@ -40,14 +40,14 @@ function Add() {
     open_issues: "",
     private: null,
   });
-  const handleChange = (event) => {
+  const handleChange = (event:any) => {
     const name = event.target.name;
     const value = event.target.value;
     setItem({ ...item, [name]: value });
   };
 
   const handleSubmit = () => {
-    let idChecked = data.map(it => it.id)
+    let idChecked = data.map((it:any) => it?.id)
     if (!idChecked.includes(item.id)) {
       dispatch({ type: ADD_ITEM, payload: item })
       console.log(data)
@@ -233,8 +233,8 @@ function Add() {
                     value={item.private}
                     label="Private"
                     onChange={handleChange}>
-                    <MenuItem value={true}>True</MenuItem>
-                    <MenuItem value={false}>False</MenuItem>
+                    <MenuItem value={1}>True</MenuItem>
+                    <MenuItem value={0}>False</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -251,7 +251,7 @@ function Add() {
               variant="contained"
               size="large"
               onClick={() => handleSubmit()} 
-              disabled={!item.id || !item.name || !item.description || !item.watchers_count || !item.language || !item.open_issues || item.private === null ? true : false}              
+              disabled={!item.id || !item.name ? true : false}              
               >
                 Submit
               </Button>

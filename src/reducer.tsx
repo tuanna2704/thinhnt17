@@ -1,4 +1,4 @@
-import { ADD_ITEM, EDIT_ITEM, FETCH_ITEM, DELETE_ITEM } from './constant.js';
+import { ADD_ITEM, EDIT_ITEM, FETCH_ITEM, DELETE_ITEM } from './constant';
 const url = "https://api.github.com/users/defunkt/repos";
 
 const initialState = {

@@ -23,7 +23,7 @@ function ListItems() {
   const dispatch = useDispatch()
   // const browserHistory = ReactRouter.browserHistory;
 
-  let items = useSelector(state => state.data.items);
+  let items = useSelector((state :any) => state.data.items);
   
   
   console.log(items)
