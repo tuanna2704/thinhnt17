@@ -15,6 +15,7 @@
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "addon-redux": "^2.0.11",
     "history": "^5.3.0",
     "react": "^18.0.0",
     "react-beautiful-dnd": "^13.1.0",
