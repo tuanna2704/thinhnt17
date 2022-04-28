@@ -27,13 +27,15 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
+    "ts-node": "^10.7.0",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -67,6 +69,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -80,6 +85,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^27.5.1",
+    "react-test-renderer": "^18.1.0",
     "redux-mock-store": "^1.5.4",
     "webpack": "^5.72.0"
   }

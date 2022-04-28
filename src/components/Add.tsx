@@ -38,7 +38,7 @@ function Add() {
     watchers_count: "",
     language: "",
     open_issues: "",
-    private: null,
+    private: '0',
   });
   const handleChange = (event:any) => {
     const name = event.target.name;
@@ -63,7 +63,7 @@ function Add() {
         <Grid container>
           <Grid item xs={12}>
             <Item>
-              <Typography sx={{ width: "90%", margin: "0 auto" }} noWrap>
+              <Typography sx={{ width: "90%", margin: "0 auto" }} noWrap component={'span'}>
                 {" "}
                 <h2>Add New Item</h2>{" "}
               </Typography>
@@ -71,7 +71,7 @@ function Add() {
           </Grid>
         </Grid>
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* ID  */}
             <Item>
@@ -94,7 +94,7 @@ function Add() {
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Name  */}
             <Item>
               <Box
@@ -118,7 +118,7 @@ function Add() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={12}>
             {/* Desciption  */}
             <Item>
@@ -144,7 +144,7 @@ function Add() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* Watchers Count  */}
             <Item>
@@ -167,7 +167,7 @@ function Add() {
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Language  */}
             <Item>
               <Box
@@ -191,7 +191,7 @@ function Add() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* Open Issues  */}
             <Item>
@@ -214,7 +214,7 @@ function Add() {
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Private  */}
             <Item>
               <Box
@@ -243,7 +243,7 @@ function Add() {
         </Grid>
         {/* end-group  */}
 
-        <Grid sx={{ width: "50%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "50%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={4}></Grid>
           <Grid item xs={2 }>
             <Item  sx={{ padding: "0"}}>
