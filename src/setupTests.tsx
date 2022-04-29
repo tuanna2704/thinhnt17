@@ -18,12 +18,13 @@ function copyProps(src, target) {
     ...Object.getOwnPropertyDescriptors(target),
   });
 }
-
+window.alert = jest.fn()
 global.window = window;
 global.document = window.document;
 global.navigator = {
   userAgent: 'node.js',
 };
+
 global.requestAnimationFrame = function (callback) {
   return setTimeout(callback, 0);
 };
